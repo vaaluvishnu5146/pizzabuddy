@@ -1,7 +1,7 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from "@reduxjs/toolkit";
 
 export const cartSlice = createSlice({
-  name: 'cart',
+  name: "cart",
   initialState: {
     cart: [],
   },
@@ -11,7 +11,7 @@ export const cartSlice = createSlice({
       // doesn't actually mutate the state because it uses the Immer library,
       // which detects changes to a "draft state" and produces a brand new
       // immutable state based off those changes
-      if(action.payload.id) {
+      if (action.payload.id) {
         state.cart.push(action.payload);
       }
     },
@@ -20,9 +20,9 @@ export const cartSlice = createSlice({
       console.log(action);
     },
   },
-})
+});
 
 // Action creators are generated for each case reducer function
-export const { addToCart, deleteItem } = cartSlice.actions
+export const { addToCart, deleteItem } = cartSlice.actions;
 
-export default cartSlice.reducer
+export default cartSlice.reducer;

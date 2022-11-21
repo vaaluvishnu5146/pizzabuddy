@@ -1,14 +1,13 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from "@reduxjs/toolkit";
 
 export const pizzaSlice = createSlice({
-  name: 'pizza',
+  name: "pizza",
   initialState: {
-    pizzas: [
-    ],
+    pizzas: [],
+    fetching: false,
   },
   reducers: {
-    addPizzaList: (state, action) => {
-      console.log('Rebdering');
+    addPizza: (state, action) => {
       state.pizzas = action.payload;
       // Redux Toolkit allows us to write "mutating" logic in reducers. It
       // doesn't actually mutate the state because it uses the Immer library,
@@ -23,9 +22,9 @@ export const pizzaSlice = createSlice({
       // state.value += action.payload
     },
   },
-})
+});
 
 // Action creators are generated for each case reducer function
-export const { addPizzaList } = pizzaSlice.actions
+export const { addPizza } = pizzaSlice.actions;
 
-export default pizzaSlice.reducer
+export default pizzaSlice.reducer;

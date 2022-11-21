@@ -1,0 +1,74 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "name": "Margeretta",
+      "uri": "https://api.pizzahut.io/v1/content/en-in/in-1/images/pizza/margherita.90f9451fd66871fb6f9cf7d506053f18.1.jpg?width=300",
+      "foodCategory": ["veg", "non-veg"],
+      "ingredients": ["Cheese"],
+      "sizes": [
+        "Medium pan",
+        "Medium schezwan pan",
+        "Medium San fransisco style"
+      ],
+      "isNew": true,
+      "isMostPopular": true,
+      "price": "290"
+    },
+    {
+      "id": 2,
+      "name": "Tandoori panneer",
+      "uri": "https://api.pizzahut.io/v1/content/en-in/in-1/images/pizza/tandoori-paneer.4ef45717e972cf45b43c010e3cde5a22.1.jpg?width=300",
+      "foodCategory": ["veg"],
+      "ingredients": ["Cheese"],
+      "sizes": [
+        "Medium pan",
+        "Medium schezwan pan",
+        "Medium San fransisco style"
+      ],
+      "isNew": true,
+      "isMostPopular": true,
+      "price": "490"
+    },
+    {
+      "id": 3,
+
+      "name": "Chicken supreme",
+      "uri": "https://api.pizzahut.io/v1/content/en-in/in-1/images/pizza/chicken-supreme.6d53f104f071d304a47440f2fffa7378.1.jpg?width=300",
+      "foodCategory": ["non-veg"],
+      "ingredients": [
+        "Herbed Chicken",
+        "Chicken Schzwan meat ball",
+        "Chicken tikka"
+      ],
+      "sizes": [
+        "Medium pan",
+        "Medium schezwan pan",
+        "Medium San fransisco style"
+      ],
+      "isNew": true,
+      "isMostPopular": true,
+      "price": "700"
+    },
+    {
+      "id": 4,
+      "name": "Chicken Tikka supreme",
+      "uri": "https://api.pizzahut.io/v1/content/en-in/in-1/images/pizza/chicken-tikka-supreme.830de5a911ca95a30e4ca98e529f1b3a.1.jpg?width=300",
+      "foodCategory": ["non-veg"],
+      "ingredients": [
+        "Chicken malai tikka",
+        "Onion",
+        "Chicken tikka",
+        "Red paprika"
+      ],
+      "sizes": [
+        "Medium pan",
+        "Medium schezwan pan",
+        "Medium San fransisco style"
+      ],
+      "isNew": true,
+      "isMostPopular": true,
+      "price": "890"
+    }
+  ]
+}
