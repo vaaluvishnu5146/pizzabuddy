@@ -2,11 +2,12 @@ import React, { useState, useEffect } from "react";
 import Navbar from "../../Components/Navbar/Navbar";
 import ProductCard from "../../Components/ProductCard/ProductCard";
 import Slider from "../../Components/Slider/Slider";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation, useRoutes } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { addToCart, deleteItem } from "../../Redux/slice/cart.slice"; // RELATIVE IMPORT
 import { addPizza } from "../../Redux/slice/pizza.slice";
 import pizzaData from "../../data.json";
+import { isExpired, decodeToken } from "react-jwt";
 
 export default function ListingPage() {
   // CREATING DISPATCHER
@@ -14,6 +15,7 @@ export default function ListingPage() {
   const { pizzas = [] } = useSelector((state) => state.pizzaReducer);
   const { cart } = useSelector((state) => state.cartReducer);
   // HOOKS
+  const location = useLocation();
   const navigate = useNavigate();
   const fetchData = async () => {
     const response = await JSON.parse(JSON.stringify(pizzaData));
@@ -21,6 +23,21 @@ export default function ListingPage() {
       dispatcher(addPizza(response.data));
     }
   };
+
+  useEffect(() => {
+    try {
+      const jwtToken = JSON.parse(localStorage.getItem("token"));
+      console.log(isExpired(jwtToken));
+      if (!jwtToken || isExpired(jwtToken)) {
+        localStorage.removeItem("token");
+        setTimeout(() => {
+          navigate("/");
+        }, 2000);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
 
   useEffect(() => {
     fetchData();
@@ -36,7 +53,7 @@ export default function ListingPage() {
   };
 
   const navigateToCart = () => {
-    navigate("/cart");
+    navigate(`/landing/cart`);
   };
 
   return (

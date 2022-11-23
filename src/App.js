@@ -1,17 +1,16 @@
-import logo from "./logo.svg";
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
-import ListingPage from "./Pages/userapp/listings-page";
-import Cart from "./Pages/userapp/cart";
-import OrderStatus from "./Pages/userapp/order-status";
+import Login from "./Pages/auth/login";
+import Landing from "./Pages/userapp/landing";
+import Signup from "./Pages/auth/signup";
 
 function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/pizzas" element={<ListingPage />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/orderStatus" element={<OrderStatus />} />
+        <Route path="/" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/landing" element={<Landing />} />
       </Routes>
     </div>
   );
