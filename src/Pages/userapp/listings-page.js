@@ -8,6 +8,7 @@ import { addToCart, deleteItem } from "../../Redux/slice/cart.slice"; // RELATIV
 import { addPizza } from "../../Redux/slice/pizza.slice";
 import pizzaData from "../../data.json";
 import { isExpired, decodeToken } from "react-jwt";
+import { useAppConfig } from "../../Contexts/AppContext";
 
 export default function ListingPage() {
   // CREATING DISPATCHER
@@ -17,12 +18,20 @@ export default function ListingPage() {
   // HOOKS
   const location = useLocation();
   const navigate = useNavigate();
+  const { isLoggedIn } = useAppConfig();
   const fetchData = async () => {
     const response = await JSON.parse(JSON.stringify(pizzaData));
     if (response.data && response.data.length > 0) {
       dispatcher(addPizza(response.data));
     }
   };
+
+  useEffect(() => {
+    if (!isLoggedIn) {
+      navigate("/");
+    }
+    return () => {};
+  }, [isLoggedIn]);
 
   useEffect(() => {
     try {

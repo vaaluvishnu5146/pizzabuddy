@@ -2,12 +2,14 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import AuthLayout from "../../Template/AuthLayout";
 import { validateEmail } from "../../utilities/helpers";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { isExpired, decodeToken } from "react-jwt";
+import { useAppConfig } from "../../Contexts/AppContext";
 
 export default function Signin() {
   const [formDetails, setFormDetails] = useState({});
   const navigation = useNavigate();
+  const { isLoggedIn, setLoggedIn = () => {} } = useAppConfig();
   const handleInput = (e) => {
     if (e) {
       let formDetailsCopy = Object.assign({}, formDetails);
@@ -15,6 +17,13 @@ export default function Signin() {
       setFormDetails(formDetailsCopy);
     }
   };
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigation("/landing");
+    }
+    return () => {};
+  }, [isLoggedIn]);
 
   useEffect(() => {
     try {
@@ -38,6 +47,7 @@ export default function Signin() {
               const jwtToken = response.data.Token;
               try {
                 localStorage.setItem("token", JSON.stringify(jwtToken));
+                setLoggedIn(true);
                 setTimeout(() => {
                   navigation("/landing");
                 }, 2000);
@@ -85,8 +95,16 @@ export default function Signin() {
           className="btn btn-primary"
           onClick={handleCreateAccount}
         >
-          Create Account
+          Login
         </button>
+        <div>
+          <p>
+            Forgot password?
+            <span>
+              <Link to="/forgotPassword">Click here</Link>
+            </span>
+          </p>
+        </div>
       </div>
     </AuthLayout>
   );
